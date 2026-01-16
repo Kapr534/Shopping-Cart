@@ -6,7 +6,7 @@ import Header from "../components/Header.tsx";
 
 describe("tests Header component rendering", () => {
     it("tests fakeshop and its link to home page", () => {
-        render(<MemoryRouter><Header /></MemoryRouter>);
+        render(<MemoryRouter><Header totalInCart={0}/></MemoryRouter>);
 
         const fakeElement = screen.getByText(/fake/i);
         const shopElement = screen.getByText(/shop/i);
@@ -20,7 +20,7 @@ describe("tests Header component rendering", () => {
     it('tests marketplace button, its link to marketplace and isActive', () => {
         render(
             <MemoryRouter initialEntries={["/marketplace"]}>
-                <Header />
+                <Header totalInCart={0}/>
             </MemoryRouter>
         );
 
@@ -36,7 +36,7 @@ describe("tests Header component rendering", () => {
     it('tests cart button, its link to cart and isActive', () => {
         render(
             <MemoryRouter initialEntries={["/cart"]}>
-                <Header />
+                <Header totalInCart={0}/>
             </MemoryRouter>
         );
 

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export default function ErrorPage() {
     return (
         <div className="grid grid-rows-3 grid-cols-1">
-            <Header />
+            <Header totalInCart={0}/>
             <main>Oops, this link doesn't exist</main>
             <Link to="/">Go home</Link>
         </div>

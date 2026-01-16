@@ -14,7 +14,7 @@ describe("tests HomePage component rendering", () => {
         expect(sloganElement2).toBeInTheDocument();
     });
 
-    it("tests if Explore Colection button link works", () => {
+    it("tests if Explore Collection button link works", () => {
         render(<MemoryRouter><HomePage /></MemoryRouter>);
 
         const marketplaceLink = screen.getByRole("link", { name: /explore collection/i });

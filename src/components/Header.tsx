@@ -3,11 +3,14 @@ import { ShoppingCartIcon as CartOutline } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon as CartSolid } from "@heroicons/react/24/solid";
 import { Squares2X2Icon } from '@heroicons/react/24/outline';
 
+interface HeaderProps {
+    totalInCart: number;
+}
 
-export default function Header() {
+export default function Header({totalInCart}: HeaderProps) {
 
     return (
-        <header className="flex flex-row h-25 p-7 text-2xl md:text-5xl tracking-tighter shadow-md">
+        <header className="flex flex-row h-25 p-7 text-4xl md:text-5xl tracking-tighter shadow-md">
             <h1>
                 <NavLink to="/" className="group flex items-center">
 
@@ -42,7 +45,7 @@ export default function Header() {
 
                             <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs font-bold
                             rounded-full h-5 w-5 flex items-center justify-center">
-                            {/*{cartCount}*/}
+                            {totalInCart}
                             </span>
                         </>
                     )}
