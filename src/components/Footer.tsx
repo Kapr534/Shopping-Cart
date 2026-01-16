@@ -36,6 +36,7 @@ export default function Footer() {
                         className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg transition-all"
                     >
                         <svg
+                            data-testid="github-icon"
                             className="w-5 h-5 fill-current"
                             viewBox="0 0 24 24"
                             aria-hidden="true"
@@ -48,7 +49,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 text-center text-xs opacity-40">
-                <p>&copy; 2026 FakeShop. Crafted for portfolio.</p>
+                <p>&copy; 2026 FakeShop | Crafted for portfolio.</p>
             </div>
         </footer>
     )
