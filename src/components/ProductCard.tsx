@@ -34,7 +34,7 @@ export default function ProductCard({ product, handleQuantityChange }: ProductCa
 
             {/* Content Container */}
             <div className="flex flex-col p-5 flex-grow">
-                <h3 className="text-slate-800 font-semibold text-sm leading-tight h-10 line-clamp-2 mb-4 group-hover:text-sky-600 transition-colors">
+                <h3 className="text-slate-800 font-semibold text-sm leading-tight min-h-[2rem] line-clamp-2 mb-4 group-hover:text-sky-600 transition-colors">
                     {product.title}
                 </h3>
 
