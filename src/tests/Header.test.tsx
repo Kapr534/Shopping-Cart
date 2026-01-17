@@ -47,4 +47,16 @@ describe("tests Header component rendering", () => {
         expect(screen.queryByTestId("icon-solid")).toBeInTheDocument();
         expect(screen.queryByTestId("icon-outline")).not.toBeInTheDocument();
     });
+
+    it('tests number of items in cart', () => {
+        render(
+            <MemoryRouter initialEntries={["/cart"]}>
+                <Header totalInCart={5}/>
+            </MemoryRouter>
+        );
+
+        const itemsInCartElement = screen.getByText("5");
+
+        expect(itemsInCartElement).toBeInTheDocument();
+    });
 })

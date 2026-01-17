@@ -10,7 +10,7 @@ interface HeaderProps {
 export default function Header({totalInCart}: HeaderProps) {
 
     return (
-        <header className="flex flex-row h-25 p-7 text-4xl md:text-5xl tracking-tighter shadow-md">
+        <header className="flex flex-row h-25 p-7 text-3xl md:text-5xl tracking-tighter shadow-md">
             <h1>
                 <NavLink to="/" className="group flex items-center">
 
@@ -45,7 +45,7 @@ export default function Header({totalInCart}: HeaderProps) {
 
                             <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs font-bold
                             rounded-full h-5 w-5 flex items-center justify-center">
-                            {totalInCart}
+                            {totalInCart === 0 ? "" : totalInCart}
                             </span>
                         </>
                     )}

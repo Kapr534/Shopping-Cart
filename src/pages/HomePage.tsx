@@ -1,10 +1,11 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import homeBanner from "../assets/home-banner.jpg";
 
 export default function HomePage() {
     return (
         <div className="relative h-[80vh] w-full overflow-hidden">
-            <img src={homeBanner} className="absolute inset-0 h-full w-full object-cover" alt="Hero Background"/>
+            <img src={homeBanner} className="absolute inset-0 h-full w-full object-cover object-[65%_center] md:object-center"
+                 alt="Hero Background"/>
 
             <div className="absolute inset-0 bg-gradient-to-r from-sky-900/80 via-emerald-900/40 to-transparent" />
 
