@@ -55,7 +55,12 @@ export default function App() {
     const handleQuantityChange = (operation: string, id: number) => {
         const newProducts = products.map((product: Product) => {
             if (product.id === id) {
-                return {...product, quantity: operation === "+" ? product.quantity + 1 : product.quantity - 1}
+                return {...product, quantity: operation === "+"
+                        ? product.quantity + 1
+                        : operation === "-"
+                        ? product.quantity - 1
+                        : 0
+                }
             }
             return product;
         });
@@ -68,7 +73,7 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
           <Header totalInCart={totalInCart}/>
 
-          <main className="flex-grow">
+          <main className="flex-grow min-h-[70vh]">
               {loading ? (
                   <p className="text-center mt-10">Načítám produkty...</p>
               ) : (

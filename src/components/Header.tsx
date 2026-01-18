@@ -12,8 +12,7 @@ export default function Header({totalInCart}: HeaderProps) {
     return (
         <header className="flex flex-row h-25 p-7 text-3xl md:text-5xl tracking-tighter shadow-md">
             <h1>
-                <NavLink to="/" className="group flex items-center">
-
+                <NavLink to="/" className="group flex items-center mt-1 md:mt-0">
                     <span className="text-emerald-600 font-black transition-colors group-hover:text-emerald-500">Fake</span>
                     <span className="text-sky-600 font-light transition-colors group-hover:text-sky-400">Shop</span>
                 </NavLink>
