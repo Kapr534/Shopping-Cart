@@ -21,7 +21,7 @@ describe("tests ProductCard component rendering and calling props functions", ()
                 count: 120
             },
             quantity: 0}}
-        handleQuantityChange={mockHandle}
+            handleQuantityChange={mockHandle}
         />)
 
         const titleElement = screen.getByText(/testitem/i);
@@ -58,7 +58,7 @@ describe("tests ProductCard component rendering and calling props functions", ()
                             handleQuantityChange={mockHandle}
         />)
 
-        const addButton = screen.getByRole('button', { name: /add/i });
+        const addButton = screen.getByRole("button", { name: /add/i });
 
         fireEvent.click(addButton);
 

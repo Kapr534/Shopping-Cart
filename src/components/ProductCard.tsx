@@ -1,10 +1,6 @@
-import type { Product } from "../App.tsx";
 import { Star, ShoppingCart, Plus, Minus } from 'lucide-react';
+import type {ProductCardProps} from "../types.ts";
 
-interface ProductCardProps {
-    product: Product;
-    handleQuantityChange: (operation: string, id: number) => void;
-}
 
 export default function ProductCard({ product, handleQuantityChange }: ProductCardProps) {
     return (

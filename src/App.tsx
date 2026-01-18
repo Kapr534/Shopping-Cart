@@ -2,19 +2,10 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import { useState, useEffect } from "react";
+import type {Product} from "./types.ts";
+import { API_URL } from "./constants.ts";
 
-export interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    category: string,
-    rating: {
-        rate: number,
-        count: number
-    },
-    quantity: number;
-}
+
 
 export default function App() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -24,7 +15,7 @@ export default function App() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("https://fakestoreapi.com/products");
+                const response = await fetch(API_URL);
                 if (!response.ok) {
                     setError("Failed downloading data");
                     return;

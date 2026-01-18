@@ -3,14 +3,14 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import MarketplacePage from "../pages/MarketplacePage.tsx";
 
 const mockProducts = [
-    { id: 1, title: 'iPhone', price: 1000, category: 'electronics', image: '', quantity: 0, description: '', rating: { rate: 4.5, count: 10 } },
-    { id: 2, title: 'Backpack', price: 50, category: 'clothing', image: '', quantity: 0, description: '', rating: { rate: 4.0, count: 5 } }
+    { id: 1, title: "iPhone", price: 1000, category: "electronics", image: "", quantity: 0, description: "", rating: { rate: 4.5, count: 10 } },
+    { id: 2, title: "Backpack", price: 50, category: "clothing", image: "", quantity: 0, description: "", rating: { rate: 4.0, count: 5 } }
 ];
 
 const mockHandleQuantityChange = vi.fn();
 
-vi.mock('react-router-dom', async () => {
-    const actual = await vi.importActual('react-router-dom');
+vi.mock("react-router-dom", async () => {
+    const actual = await vi.importActual("react-router-dom");
     return {
         ...actual,
         useOutletContext: () => ({
@@ -32,7 +32,7 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.getByText("Backpack")).toBeInTheDocument();
 
         const counter = screen.getByText(/showing/i);
-        expect(counter).toHaveTextContent('2');
+        expect(counter).toHaveTextContent("2");
     });
 
     it("should filter products when a category button is clicked and unfilter when all is clicked", () => {
@@ -45,7 +45,7 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.queryByText("Backpack")).not.toBeInTheDocument();
 
         const counter = screen.getByText(/showing/i);
-        expect(counter).toHaveTextContent('1');
+        expect(counter).toHaveTextContent("1");
 
         const allButton = screen.getByRole("button", { name: /all/i });
         fireEvent.click(allButton);
@@ -64,20 +64,20 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.queryByText("Backpack")).not.toBeInTheDocument();
 
         const counter = screen.getByText(/showing/i);
-        expect(counter).toHaveTextContent('1');
+        expect(counter).toHaveTextContent("1");
     });
 
     it("should find products regardless of case sensitivity (uppercase/lowercase)", () => {
         render(<MarketplacePage />);
 
-        const searchBar = screen.getByRole('textbox');
+        const searchBar = screen.getByRole("textbox");
         fireEvent.change(searchBar, { target: { value: "IPhoNe" } });
 
         expect(screen.getByText("iPhone")).toBeInTheDocument();
         expect(screen.queryByText("Backpack")).not.toBeInTheDocument();
 
         const counter = screen.getByText(/showing/i);
-        expect(counter).toHaveTextContent('1');
+        expect(counter).toHaveTextContent("1");
     });
 
     it("should combine category and search filtering", () => {
@@ -85,8 +85,8 @@ describe("tests MarketplacePage component rendering", () => {
 
         const electronicsButton = screen.getByRole("button", { name: /electronics/i });
         fireEvent.click(electronicsButton);
-        const searchBar = screen.getByRole('textbox');
-        fireEvent.change(searchBar, { target: { value: 'IPhoNe' } });
+        const searchBar = screen.getByRole("textbox");
+        fireEvent.change(searchBar, { target: { value: "IPhoNe" } });
 
         expect(screen.getByText("iPhone")).toBeInTheDocument();
         expect(screen.queryByText("Backpack")).not.toBeInTheDocument();
@@ -104,9 +104,9 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.queryByText(/no products found/i)).not.toBeInTheDocument();
         expect(screen.queryByText(/we couldn't find anything matching your search/i)).not.toBeInTheDocument();
 
-        const electronicsButton = screen.getByRole('button', { name: /electronics/i });
+        const electronicsButton = screen.getByRole("button", { name: /electronics/i });
         fireEvent.click(electronicsButton);
-        const searchBar = screen.getByRole('textbox');
+        const searchBar = screen.getByRole("textbox");
         fireEvent.change(searchBar, { target: { value: "backpack" } });
 
         expect(screen.getByText(/no products found/i)).toBeInTheDocument();
@@ -114,7 +114,7 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.queryByText("iPhone")).not.toBeInTheDocument();
         expect(screen.queryByText("Backpack")).not.toBeInTheDocument();
 
-        const clearButton = screen.getByRole('button', { name: /clear all filters/i });
+        const clearButton = screen.getByRole("button", { name: /clear all filters/i });
         fireEvent.click(clearButton);
 
         expect(searchBar).toHaveValue("");
@@ -122,7 +122,7 @@ describe("tests MarketplacePage component rendering", () => {
         expect(screen.getByText("Backpack")).toBeInTheDocument();
 
         const counter = screen.getByText(/showing/i);
-        expect(counter).toHaveTextContent('2');
+        expect(counter).toHaveTextContent("2");
     });
 
     it("should show 'Showing X products', depending on how many products are shown", () => {
@@ -131,12 +131,12 @@ describe("tests MarketplacePage component rendering", () => {
         const counter = screen.getByText(/showing/i);
         expect(counter).toHaveTextContent("2");
 
-        const electronicsButton = screen.getByRole('button', { name: /electronics/i });
+        const electronicsButton = screen.getByRole("button", { name: /electronics/i });
         fireEvent.click(electronicsButton);
 
         expect(counter).toHaveTextContent("1");
 
-        const searchBar = screen.getByRole('textbox');
+        const searchBar = screen.getByRole("textbox");
         fireEvent.change(searchBar, { target: { value: "backpack" } });
 
         expect(counter).toHaveTextContent("0");
@@ -145,8 +145,8 @@ describe("tests MarketplacePage component rendering", () => {
     it("Active category should have class bg-sky-600", () => {
         render(<MarketplacePage />);
 
-        const allButton = screen.getByRole('button', { name: /all/i });
-        const electronicsButton = screen.getByRole('button', { name: /electronics/i });
+        const allButton = screen.getByRole("button", { name: /all/i });
+        const electronicsButton = screen.getByRole("button", { name: /electronics/i });
 
         expect(allButton).toHaveClass("bg-sky-600");
         expect(electronicsButton).not.toHaveClass("bg-sky-600");
@@ -163,7 +163,7 @@ describe("tests MarketplacePage component rendering", () => {
         const addButtons = screen.getAllByRole("button", { name: /add/i });
         fireEvent.click(addButtons[0]);
 
-        expect(mockHandleQuantityChange).toHaveBeenCalledWith('+', 1);
+        expect(mockHandleQuantityChange).toHaveBeenCalledWith("+", 1);
         expect(mockHandleQuantityChange).toHaveBeenCalledTimes(1);
     });
 

@@ -2,10 +2,8 @@ import { NavLink } from "react-router-dom";
 import { ShoppingCartIcon as CartOutline } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon as CartSolid } from "@heroicons/react/24/solid";
 import { Squares2X2Icon } from '@heroicons/react/24/outline';
+import type {HeaderProps} from "../types.ts";
 
-interface HeaderProps {
-    totalInCart: number;
-}
 
 export default function Header({totalInCart}: HeaderProps) {
 

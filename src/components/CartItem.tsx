@@ -1,13 +1,8 @@
-import type { Product } from "../App.tsx";
+import type {CartItemProps} from "../types.ts";
 
-interface cartItemProps {
-    item: Product;
-    handleQuantityChange: (operation: string, id: number) => void;
-}
-
-export const CartItem = ({ item, handleQuantityChange }: cartItemProps) => {
+export const CartItem = ({ item, handleQuantityChange }: CartItemProps) => {
     return (
-        <div className="flex flex-col sm:flex-row items-center justify-between border-b py-6 sm:py-4 px-2 hover:bg-gray-50 transition-colors group gap-4 sm:gap-0">
+        <div data-testid="cart-item" className="flex flex-col sm:flex-row items-center justify-between border-b py-6 sm:py-4 px-2 hover:bg-gray-50 transition-colors group gap-4 sm:gap-0">
             <div className="flex items-center gap-4 flex-1 w-full sm:w-auto">
                 <img
                     src={item.image}

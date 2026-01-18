@@ -1,4 +1,4 @@
-import type { Product } from "../App.tsx";
+import type { Product } from "../types.ts";
 import {useMemo, useState} from "react";
 import { useOutletContext } from "react-router-dom";
 import ProductCard from "../components/ProductCard.tsx";

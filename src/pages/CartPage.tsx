@@ -1,12 +1,11 @@
 import { useOutletContext, Link , useNavigate } from "react-router-dom";
-import type { Product } from "../App.tsx";
+import type { Product } from "../types.ts";
 import { CartItem } from "../components/CartItem.tsx";
 import { useMemo } from "react";
+import { freeShippingThreshold, shippingCost} from "../constants.ts";
 
 export default function CartPage() {
     const navigate = useNavigate();
-    const shippingThreshold = 500;
-    const shippingCost = 6;
 
     const { products, handleQuantityChange } = useOutletContext<{
         products: Product[],
@@ -24,7 +23,7 @@ export default function CartPage() {
 
     const handleCheckout = () => {
         products.forEach(product => {
-            if (product.quantity > 0) handleQuantityChange('0', product.id);
+            if (product.quantity > 0) handleQuantityChange("0", product.id);
         })
 
         navigate("/success");
@@ -34,7 +33,7 @@ export default function CartPage() {
         return (
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
                 <div className="bg-gray-100 p-6 rounded-full mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" data-testid="bag-icon">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                 </div>
@@ -77,7 +76,7 @@ export default function CartPage() {
 
                         {shipping > 0 && (
                             <p className="text-xs text-blue-500 bg-blue-50 p-2 rounded-lg">
-                                Tip: Add <b>${(shippingThreshold - subtotal).toFixed(2)}</b> more for Free Shipping!
+                                Tip: Add <b>${(freeShippingThreshold - subtotal).toFixed(2)}</b> more for Free Shipping!
                             </p>
                         )}
 

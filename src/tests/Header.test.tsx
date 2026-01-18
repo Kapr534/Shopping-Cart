@@ -17,7 +17,7 @@ describe("tests Header component rendering", () => {
         expect(homePageLink).toHaveAttribute("href", "/");
     })
 
-    it('tests marketplace button, its link to marketplace and isActive', () => {
+    it("tests marketplace button, its link to marketplace and isActive", () => {
         render(
             <MemoryRouter initialEntries={["/marketplace"]}>
                 <Header totalInCart={0}/>
@@ -33,7 +33,7 @@ describe("tests Header component rendering", () => {
         expect(marketplaceLink).toHaveAttribute("aria-current", "page")
     });
 
-    it('tests cart button, its link to cart and isActive', () => {
+    it("tests cart button, its link to cart and isActive", () => {
         render(
             <MemoryRouter initialEntries={["/cart"]}>
                 <Header totalInCart={0}/>
@@ -48,7 +48,7 @@ describe("tests Header component rendering", () => {
         expect(screen.queryByTestId("icon-outline")).not.toBeInTheDocument();
     });
 
-    it('tests number of items in cart', () => {
+    it("tests number of items in cart", () => {
         render(
             <MemoryRouter initialEntries={["/cart"]}>
                 <Header totalInCart={5}/>
