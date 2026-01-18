@@ -1,10 +1,13 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ProductCard from "../components/ProductCard.tsx";
 
 describe("tests ProductCard component rendering and calling props functions", () => {
+    beforeEach(() => {
+        vi.clearAllMocks();
+    });
+
     it("tests if it renders all the information about the product", () => {
-        vi.clearAllMocks()
         const mockHandle = vi.fn();
 
         render(<ProductCard product={{
@@ -38,7 +41,6 @@ describe("tests ProductCard component rendering and calling props functions", ()
     });
 
     it("tests buttons and if they call + props function", () => {
-        vi.clearAllMocks()
         const mockHandle = vi.fn();
         const productId = 1;
 
@@ -65,7 +67,6 @@ describe("tests ProductCard component rendering and calling props functions", ()
     });
 
     it("tests buttons and if they call + and - props function", () => {
-        vi.clearAllMocks()
         const mockHandle = vi.fn();
         const productId = 1;
 
