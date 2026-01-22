@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import MarketplacePage from "../pages/MarketplacePage.tsx";
 
 const mockProducts = [
-    { id: 1, title: "iPhone", price: 1000, category: "electronics", image: "", quantity: 0, description: "", rating: { rate: 4.5, count: 10 } },
-    { id: 2, title: "Backpack", price: 50, category: "clothing", image: "", quantity: 0, description: "", rating: { rate: 4.0, count: 5 } }
+    { id: 1, title: "iPhone", price: 1000, category: "electronics", image: null, quantity: 0, description: "", rating: { rate: 4.5, count: 10 } },
+    { id: 2, title: "Backpack", price: 50, category: "clothing", image: null, quantity: 0, description: "", rating: { rate: 4.0, count: 5 } }
 ];
 
 const mockHandleQuantityChange = vi.fn();

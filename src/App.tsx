@@ -41,8 +41,6 @@ export default function App() {
         void fetchProducts();
     }, []);
 
-    if (error) return <p>Error: {error}</p>;
-
     const handleQuantityChange = (operation: string, id: number) => {
         const newProducts = products.map((product: Product) => {
             if (product.id === id) {
@@ -65,11 +63,15 @@ export default function App() {
           <Header totalInCart={totalInCart}/>
 
           <main className="flex-grow min-h-[70vh]">
-              {loading ? (
-                  <p className="text-center mt-10">Načítám produkty...</p>
-              ) : (
-                  <Outlet context={{ products, handleQuantityChange }} />
-              )}
+              {
+                  error
+                  ? <p>Error: {error}</p>
+                  : loading ? (
+                      <p className="text-center mt-10">Načítám produkty...</p>
+                  ) : (
+                      <Outlet context={{ products, handleQuantityChange }} />
+                  )
+              }
           </main>
 
           <Footer />
