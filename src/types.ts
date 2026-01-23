@@ -25,7 +25,21 @@ export interface ProductCardProps {
     handleQuantityChange: (operation: string, id: number) => void;
 }
 
+
+export interface TestProduct {
+    id: number;
+    title: string;
+    price: number;
+    image: string | null;
+    category: string,
+    rating: {
+        rate: number,
+        count: number
+    },
+    quantity: number;
+}
+
 export interface ContextType {
-    products: Product[];
+    products: TestProduct[];
     handleQuantityChange: (operation: string, id: number) => void;
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
-import { render, screen} from "@testing-library/react"; // fireEvent
+import {fireEvent, render, screen} from "@testing-library/react";
 import CartPage from "../pages/CartPage.tsx";
 import type { ContextType } from "../types.ts";
 
@@ -32,7 +32,7 @@ describe("tests ProductCard component rendering and calling props functions", ()
                 id: 1,
                 title: "iPhone",
                 price: 1000,
-                image: "",
+                image: null,
                 category: "electronics",
                 rating: { rate: 4.5, count: 10 },
                 quantity: 0
@@ -54,7 +54,7 @@ describe("tests ProductCard component rendering and calling props functions", ()
                 id: 1,
                 title: "iPhone",
                 price: 1000,
-                image: "",
+                image: null,
                 category: "electronics",
                 rating: { rate: 4.5, count: 10 },
                 quantity: 0
@@ -70,10 +70,10 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("renders correct number of CartItem components (quantity > 0)", () => {
         contextData.products = [
-            {id: 1, title: "iPhone", price: 1000, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 10000, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 2},
-            {id: 3, title: "Table", price: 10, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
-            {id: 4, title: "Bread", price: 100, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
+            {id: 1, title: "iPhone", price: 1000, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 10000, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 2},
+            {id: 3, title: "Table", price: 10, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
+            {id: 4, title: "Bread", price: 100, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -84,10 +84,10 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("should render the constant shipping price if under 500", () => {
         contextData.products = [
-            {id: 1, title: "iPhone", price: 55.99, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
-            {id: 3, title: "Table", price: 22.30, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
-            {id: 4, title: "Bread", price: 100, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
+            {id: 1, title: "iPhone", price: 55.99, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
+            {id: 3, title: "Table", price: 22.30, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
+            {id: 4, title: "Bread", price: 100, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -97,10 +97,10 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("should render free shipping if 500 or more", () => {
         contextData.products = [
-            {id: 1, title: "iPhone", price: 55.99, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
-            {id: 3, title: "Table", price: 22.30, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
-            {id: 4, title: "Bread", price: 100, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 4},
+            {id: 1, title: "iPhone", price: 55.99, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 0},
+            {id: 3, title: "Table", price: 22.30, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 10},
+            {id: 4, title: "Bread", price: 100, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 4},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -114,8 +114,8 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("tests if subtotal price is right", () => {
         contextData.products = [
-            {id: 1, title: "iphone", price: 2.51, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 30},
+            {id: 1, title: "iphone", price: 2.51, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 30},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -125,8 +125,8 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("tests if total price is right with shipping (under 500)", () => {
         contextData.products = [
-            {id: 1, title: "iphone", price: 2.51, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 30},
+            {id: 1, title: "iphone", price: 2.51, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 30},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -136,8 +136,8 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("tests if total price is right without shipping (more than 500)", () => {
         contextData.products = [
-            {id: 1, title: "iphone", price: 2.51, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 500},
+            {id: 1, title: "iphone", price: 2.51, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 500},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
@@ -151,13 +151,83 @@ describe("tests ProductCard component rendering and calling props functions", ()
 
     it("should render including VAT", () => {
         contextData.products = [
-            {id: 1, title: "iphone", price: 2.51, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
-            {id: 2, title: "Backpack", price: 1, image: "", category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 500},
+            {id: 1, title: "iphone", price: 2.51, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 500},
         ];
 
         render(<MemoryRouter><CartPage /></MemoryRouter>);
 
         expect(screen.getByText(/including vat/i)).toBeInTheDocument();
+    });
+
+    it("should navigate to /success after clicking checkout", () => {
+        contextData.products = [
+            {id: 1, title: "iphone", price: 2.51, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 1},
+            {id: 2, title: "Backpack", price: 1, image: null, category: "electronics", rating: { rate: 4.5, count: 10 }, quantity: 500},
+        ];
+
+        render(<MemoryRouter><CartPage /></MemoryRouter>);
+
+        const checkoutButton = screen.getByRole("button", { name: /checkout now/i });
+        fireEvent.click(checkoutButton);
+
+        expect(contextData.handleQuantityChange).toHaveBeenCalledWith("0", 1);
+        expect(mockNavigate).toHaveBeenCalledWith("/success");
+    });
+
+    it("should update total price when product quantity changes", () => {
+        contextData.products = [
+            { id: 1, title: "iPhone", price: 1000, image: null, category: "electronics", rating: { rate: 5, count: 1 }, quantity: 1 }
+        ];
+
+        const { rerender } = render(<MemoryRouter><CartPage /></MemoryRouter>);
+        const totalLabel = screen.getByText(/subtotal/i);
+        const totalRow = totalLabel.closest('div');
+        expect(totalRow).toHaveTextContent("$1000.00");
+
+        contextData.products = [
+            { id: 1, title: "iPhone", price: 1000, image: null, category: "electronics", rating: { rate: 5, count: 1 }, quantity: 2 }
+        ];
+        rerender(<MemoryRouter><CartPage /></MemoryRouter>);
+        expect(totalRow).toHaveTextContent("$2000.00");
+    });
+
+    it("should correctly receive data from useOutletContext", () => {
+        const testProduct = {
+            id: 99,
+            title: "Mock Test Product",
+            price: 10,
+            image: null,
+            category: "test",
+            rating: { rate: 5, count: 1 },
+            quantity: 1
+        };
+        contextData.products = [testProduct];
+
+        render(<MemoryRouter><CartPage /></MemoryRouter>);
+
+        expect(screen.getByText("Mock Test Product")).toBeInTheDocument();
+    });
+
+    it("should call useNavigate with correct path", () => {
+        contextData.products = [
+            {
+                id: 1,
+                title: "Iphone",
+                price: 10,
+                image: null,
+                category: "electronics",
+                rating: { rate: 5, count: 1 },
+                quantity: 1
+            }
+        ];
+
+        render(<MemoryRouter><CartPage /></MemoryRouter>);
+
+        const checkoutButton = screen.getByRole("button", { name: /checkout now/i });
+        fireEvent.click(checkoutButton);
+
+        expect(mockNavigate).toHaveBeenCalledWith("/success");
     });
 });
 
